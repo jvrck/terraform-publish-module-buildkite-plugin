@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -eu
+
+echo "  - wait"
+echo "  - command: \"echo Deploy!\""
+echo "    label: \":rocket:\""
+echo "    agents:"
+echo "      queue: \"default\""
