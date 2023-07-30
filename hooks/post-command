@@ -20,9 +20,9 @@ echo  ${SCRIPT_DIR}/plugin-pipeline.yml
 PL="
 - wait\\n
 - command: \"echo Deploy!\"\\n
-  label: \":rocket:\"\\n
-  agents:\\n
-    queue: \"default\"\\n
+\tlabel: \":rocket:\"\\n
+\tagents:\\n
+\t\tqueue: \"default\"\\n
 "
 
 echo -e $PL
