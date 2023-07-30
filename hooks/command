@@ -2,15 +2,14 @@
 
 set -xeu
 
-SCRIPT_DIR="$(dirname "$(realpath "$0")")"
-
-PL="
-steps:\\n
-\t- wait\\n
-\t- command: \"echo Deploy!\"\\n
-\t\tlabel: \":rocket:\"\\n
-\t\tagents:\\n
-\t\t\tqueue: \"default\"\\n
-"
+PL=$(cat <<-END
+steps:
+    - wait
+    - command: "echo Deploy!"
+        label: ":rocket:"
+        agents:
+        queue: "default"
+END
+)
 
 echo -e $PL | buildkite-agent pipeline upload
