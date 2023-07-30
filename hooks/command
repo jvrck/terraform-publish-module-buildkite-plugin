@@ -11,4 +11,4 @@ PL=$(cat <<-END
 END
 )
 
-echo -e $PL | buildkite-agent pipeline upload
+# echo -e $PL | buildkite-agent pipeline upload

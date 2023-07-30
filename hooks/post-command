@@ -52,3 +52,4 @@ END
 
 echo "$USAGE"
 
+buildkite-agent pipeline upload .buildkite/plugin-pipeline.yml
