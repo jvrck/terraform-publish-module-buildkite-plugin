@@ -2,13 +2,4 @@
 
 set -xeu
 
-PL=$(cat <<-END
-    - wait
-    - command: "echo Deploy!"
-        label: ":rocket:"
-        agents:
-        queue: "default"
-END
-)
-
-# echo -e $PL | buildkite-agent pipeline upload
+buildkite-agent pipeline upload .buildkite/plugin-pipeline.yml
