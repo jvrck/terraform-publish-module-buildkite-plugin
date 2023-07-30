@@ -7,3 +7,11 @@ echo "  - command: \"echo Deploy!\""
 echo "    label: \":rocket:\""
 echo "    agents:"
 echo "      queue: \"default\""
+
+echo $PWD
+
+SCRIPT_DIR="$(dirname "$(realpath "$0")")"
+
+echo $SCRIPT_DIR
+
+echo  ${SCRIPT_DIR}/plugin-pipeline.yml
