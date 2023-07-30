@@ -4,4 +4,4 @@ set -eu
 
 SCRIPT_DIR="$(dirname "$(realpath "$0")")"
 
-buildkite-agent pipeline upload ${SCRIPT_DIR}/plugin-pipeline.yml
+echo -e $PL | buildkite-agent pipeline upload
