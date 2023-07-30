@@ -4,6 +4,6 @@ set -xeu
 
 echo $BUILDKITE_PLUGIN_CONFIGURATION
 echo $BUILDKITE_PLUGIN_NAME
-
+echo $BUILDKITE_PLUGINS
 
 buildkite-agent pipeline upload /buildkite/plugins/github-com-jvrck-terraform-publish-module-buildkite-plugin-release-0-0-1/hooks/plugin-pipeline.yml
