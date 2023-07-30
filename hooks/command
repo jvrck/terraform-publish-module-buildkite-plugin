@@ -2,4 +2,4 @@
 
 set -xeu
 
-buildkite-agent pipeline upload .buildkite/plugin-pipeline.yml
+buildkite-agent pipeline upload /buildkite/plugins/github-com-jvrck-terraform-publish-module-buildkite-plugin-release-0-0-1/hooks/plugin-pipeline.yml
