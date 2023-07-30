@@ -1,0 +1,5 @@
+#!/bin/bash
+
+set -eu
+
+buildkite-agent pipeline upload plugin-pipeline.yml

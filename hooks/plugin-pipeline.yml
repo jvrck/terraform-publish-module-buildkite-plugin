@@ -1,0 +1,5 @@
+- wait
+- command: "echo Deploy!"
+  label: ":rocket:"
+  agents:
+    queue: "default"
