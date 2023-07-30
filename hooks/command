@@ -4,4 +4,12 @@ set -eu
 
 SCRIPT_DIR="$(dirname "$(realpath "$0")")"
 
+PL="
+- wait\\n
+- command: \"echo Deploy!\"\\n
+  label: \":rocket:\"\\n
+  agents:\\n
+    queue: \"default\"\\n
+"
+
 echo -e $PL | buildkite-agent pipeline upload
