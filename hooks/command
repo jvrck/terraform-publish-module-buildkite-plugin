@@ -2,8 +2,26 @@
 
 set -xeu
 
+function format_url() {
+  local url=$1
+  url=${url//\//-}   # Replace '/' with '-'
+  url=${url//\./-}   # Replace '.' with '-'
+  url=${url//#/-}    # Replace '#' with '-'
+  echo "$url"
+}
+
 echo $BUILDKITE_PLUGIN_CONFIGURATION
 echo $BUILDKITE_PLUGIN_NAME
 echo $BUILDKITE_PLUGINS
 
-buildkite-agent pipeline upload /buildkite/plugins/github-com-jvrck-terraform-publish-module-buildkite-plugin-release-0-0-1/hooks/plugin-pipeline.yml
+TFC_PLUGIN_URL=$(echo "$BUILDKITE_PLUGINS" | jq -r '.[] | select(. | keys[] | contains("github.com/jvrck/terraform-publish-module-buildkite-plugin")) | keys[]')
+echo "$TFC_PLUGIN_URL"
+echo "==========="
+TFC_PLUGIN_PATH=$(format_url "$TFC_PLUGIN_URL")
+echo "$TFC_PLUGIN_PATH"
+echo "==========="
+TFC_PLUGIN_PIPELINE_PATH=${TFC_PLUGIN_PATH}/${TFC_PLUGIN_PATH}/hooks/plugin-pipeline.yml
+echo "$TFC_PLUGIN_PIPELINE_PATH"
+echo "==========="
+
+buildkite-agent pipeline upload "${TFC_PLUGIN_PIPELINE_PATH}"
