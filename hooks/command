@@ -5,11 +5,12 @@ set -xeu
 SCRIPT_DIR="$(dirname "$(realpath "$0")")"
 
 PL="
-- wait\\n
-- command: \"echo Deploy!\"\\n
-\tlabel: \":rocket:\"\\n
-\tagents:\\n
-\t\tqueue: \"default\"\\n
+steps:\\n
+\t- wait\\n
+\t- command: \"echo Deploy!\"\\n
+\t\tlabel: \":rocket:\"\\n
+\t\tagents:\\n
+\t\t\tqueue: \"default\"\\n
 "
 
 echo -e $PL | buildkite-agent pipeline upload

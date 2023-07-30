@@ -18,11 +18,12 @@ echo  ${SCRIPT_DIR}/plugin-pipeline.yml
 
 
 PL="
-- wait\\n
-- command: \"echo Deploy!\"\\n
-\tlabel: \":rocket:\"\\n
-\tagents:\\n
-\t\tqueue: \"default\"\\n
+steps:\\n
+\t- wait\\n
+\t- command: \"echo Deploy!\"\\n
+\t\tlabel: \":rocket:\"\\n
+\t\tagents:\\n
+\t\t\tqueue: \"default\"\\n
 "
 
 echo -e $PL
