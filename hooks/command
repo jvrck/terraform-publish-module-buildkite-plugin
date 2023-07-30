@@ -20,7 +20,7 @@ echo "==========="
 TFC_PLUGIN_PATH=$(format_url "$TFC_PLUGIN_URL")
 echo "$TFC_PLUGIN_PATH"
 echo "==========="
-TFC_PLUGIN_PIPELINE_PATH=${TFC_PLUGIN_PATH}/${TFC_PLUGIN_PATH}/hooks/plugin-pipeline.yml
+TFC_PLUGIN_PIPELINE_PATH=${BUILDKITE_PLUGINS_PATH}${TFC_PLUGIN_PATH}/hooks/plugin-pipeline.yml
 echo "$TFC_PLUGIN_PIPELINE_PATH"
 echo "==========="
 
