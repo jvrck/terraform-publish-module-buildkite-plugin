@@ -3,7 +3,6 @@
 set -xeu
 
 PL=$(cat <<-END
-steps:
     - wait
     - command: "echo Deploy!"
         label: ":rocket:"
