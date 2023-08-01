@@ -1,5 +1,29 @@
-- wait
-- command: "echo This is it!"
-  label: ":rocket:"
-  agents:
-    queue: "default"
+steps:
+  - label: ":terraform: Validate"
+    depends_on: ~
+    plugins:
+      - docker#v5.8.0:
+          image: "hashicorp/terraform"
+          entrypoint: "/bin/sh"
+          command: ["-c", "terraform init && terraform validate"]
+
+  - label: ":terraform: fmt"
+    depends_on: ~
+    plugins:
+      - docker#v5.8.0:
+          image: "hashicorp/terraform"
+          entrypoint: "/bin/sh"
+          command: ["-c", "terraform init && terraform fmt -recursive -check -diff -write=false"]
+  
+  - wait
+
+  - block: ":git: Tag and Publish"
+    prompt: "Provide a tag. Tags that are not on a branch will have -dev appended to the tag"
+    fields:
+      - text: "Tag"
+        key: "tag"
+        required: true
+        hint: "e.g. v1.0.0"
+
+  - label: ":git: Perform Tag and Publish"
+    command: "bash -c $TAG_SCRIPT_PATH"
