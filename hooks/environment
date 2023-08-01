@@ -20,10 +20,10 @@ echo "==========="
 export TFC_PLUGIN_PATH=$(format_url "$TFC_PLUGIN_URL")
 echo "$TFC_PLUGIN_PATH"
 echo "==========="
-export TFC_PLUGIN_PIPELINE_PATH=${BUILDKITE_PLUGINS_PATH}/${TFC_PLUGIN_PATH}/hooks/plugin-pipeline.yml
+export TFC_PLUGIN_PIPELINE_PATH=${BUILDKITE_PLUGINS_PATH}/${TFC_PLUGIN_PATH}hooks/plugin-pipeline.yml
 echo "$TFC_PLUGIN_PIPELINE_PATH"
 echo "==========="
 
-export TAG_SCRIPT_PATH=${BUILDKITE_PLUGINS_PATH}/${TFC_PLUGIN_PATH}/hooks/tag.sh
+export TAG_SCRIPT_PATH=${BUILDKITE_PLUGINS_PATH}/${TFC_PLUGIN_PATH}hooks/tag.sh
 echo "$TAG_SCRIPT_PATH"
 echo "==========="
