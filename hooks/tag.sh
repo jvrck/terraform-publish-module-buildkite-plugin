@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -xeu
+set -xeuo pipefail
 
 : '
 This function checks if a given tag exists in a git repository.
@@ -28,8 +28,15 @@ function check_git_tag() {
     fi
 }
 
-SUFFIX="-dev"
+# set default suffix
+# TODO: check if the suffix is defaulted from the plugin config 
+if [[ -z "$BUILDKITE_PLUGIN_TERRAFORM_PUBLISH_MODULE_SUFFIX" ]]; then
+  BUILDKITE_PLUGIN_TERRAFORM_PUBLISH_MODULE_SUFFIX="-dev"
+fi
+SUFFIX=$BUILDKITE_PLUGIN_TERRAFORM_PUBLISH_MODULE_SUFFIX
+
 # Get the tag from the buildkite agent
+# This is the input from the user
 TAG=$(buildkite-agent meta-data get tag)
 
 # BUILDKITE_PIPELINE_DEFAULT_BRANCH - the main branch of the repo 
