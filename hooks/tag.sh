@@ -28,6 +28,8 @@ function check_git_tag() {
     fi
 }
 
+env 
+
 # set default suffix
 # TODO: check if the suffix is defaulted from the plugin config 
 if [[ -z "$BUILDKITE_PLUGIN_TERRAFORM_PUBLISH_MODULE_SUFFIX" ]]; then
