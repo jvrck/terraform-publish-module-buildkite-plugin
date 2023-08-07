@@ -1,0 +1,11 @@
+name: Publish Terraform Module
+description: Tags branches and publishes Terraform modules to the Terraform Registry
+author: https://github.com/jvrck
+requirements:
+  - git
+  - jq
+  - docker
+  - bash
+configuration:
+  properties:
+required: []

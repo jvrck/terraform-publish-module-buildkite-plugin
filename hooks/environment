@@ -1,0 +1,29 @@
+#!/bin/bash
+
+set -xeuo pipefail
+
+: '
+This function flattens the path of the plugin path on disk.
+
+Usage:
+    format_url path
+'
+function format_url() {
+  local url=$1
+  url=${url//\//-}   # Replace '/' with '-'
+  url=${url//\./-}   # Replace '.' with '-'
+  url=${url//#/-}    # Replace '#' with '-'
+  echo "$url"
+}
+
+# get the plugin url from the buildkite plugins json
+export TFC_PLUGIN_URL=$(echo "$BUILDKITE_PLUGINS" | jq -r '.[] | select(. | keys[] | contains("github.com/jvrck/terraform-publish-module-buildkite-plugin")) | keys[]')
+
+# format the plugin url to be used as a path
+export TFC_PLUGIN_PATH=$(format_url "$TFC_PLUGIN_URL")
+
+# the path to the plugin pipeline file to be used by the buildkite-agent 
+export TFC_PLUGIN_PIPELINE_PATH=${BUILDKITE_PLUGINS_PATH}/${TFC_PLUGIN_PATH}/hooks/plugin-pipeline.yml
+
+# the path to the plugin tag script to be used by the pipeline
+export TAG_SCRIPT_PATH=${BUILDKITE_PLUGINS_PATH}/${TFC_PLUGIN_PATH}/hooks/tag.sh

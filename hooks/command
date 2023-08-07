@@ -1,0 +1,5 @@
+#!/bin/bash
+
+set -xeuo pipefail
+
+buildkite-agent pipeline upload "${TFC_PLUGIN_PIPELINE_PATH}"
