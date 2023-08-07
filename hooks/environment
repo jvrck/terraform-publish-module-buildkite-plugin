@@ -11,15 +11,9 @@ function format_url() {
 }
 
 export TFC_PLUGIN_URL=$(echo "$BUILDKITE_PLUGINS" | jq -r '.[] | select(. | keys[] | contains("github.com/jvrck/terraform-publish-module-buildkite-plugin")) | keys[]')
-echo "$TFC_PLUGIN_URL"
-echo "==========="
+
 export TFC_PLUGIN_PATH=$(format_url "$TFC_PLUGIN_URL")
-echo "$TFC_PLUGIN_PATH"
-echo "==========="
+
 export TFC_PLUGIN_PIPELINE_PATH=${BUILDKITE_PLUGINS_PATH}/${TFC_PLUGIN_PATH}/hooks/plugin-pipeline.yml
-echo "$TFC_PLUGIN_PIPELINE_PATH"
-echo "==========="
 
 export TAG_SCRIPT_PATH=${BUILDKITE_PLUGINS_PATH}/${TFC_PLUGIN_PATH}/hooks/tag.sh
-echo "$TAG_SCRIPT_PATH"
-echo "==========="

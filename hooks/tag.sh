@@ -31,11 +31,7 @@ function check_git_tag() {
 env 
 
 # set default suffix
-# TODO: check if the suffix is defaulted from the plugin config 
-if [[ -z "$BUILDKITE_PLUGIN_TERRAFORM_PUBLISH_MODULE_SUFFIX" ]]; then
-  BUILDKITE_PLUGIN_TERRAFORM_PUBLISH_MODULE_SUFFIX="-dev"
-fi
-SUFFIX=$BUILDKITE_PLUGIN_TERRAFORM_PUBLISH_MODULE_SUFFIX
+SUFFIX="-dev"
 
 # Get the tag from the buildkite agent
 # This is the input from the user

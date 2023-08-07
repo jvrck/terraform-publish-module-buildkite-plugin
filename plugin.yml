@@ -8,7 +8,4 @@ requirements:
   - bash
 configuration:
   properties:
-    suffix:
-      type: string
-      default: "-dev"
 required: []
