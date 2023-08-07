@@ -28,8 +28,6 @@ function check_git_tag() {
     fi
 }
 
-env 
-
 # set default suffix
 SUFFIX="-dev"
 
